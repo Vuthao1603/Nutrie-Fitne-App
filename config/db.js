@@ -2,12 +2,11 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
     try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/Nutrie_Fitne");
+    await mongoose.connect("mongodb://127.0.0.1:27017/Nutri_Fitnes");
     console.log("✅ MongoDB connected");
     } catch (err) {
     console.error("❌ MongoDB connect error:", err);
     process.exit(1);
     }
 };
-
 module.exports = connectDB;

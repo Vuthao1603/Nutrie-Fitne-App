@@ -14,4 +14,11 @@ router.put("/:id", foodController.updateFood);
 // DELETE food
 router.delete("/:id", foodController.deleteFood);
 
+//lọc theo danh muc
+router.get("/category/:category", foodController.getFoodsByCategory); 
+
+// GET food by ID
+router.get("/:id", foodController.getFoodById);
+
+
 module.exports = router;

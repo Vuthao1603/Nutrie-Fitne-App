@@ -3,8 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 
-
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -15,10 +13,14 @@ connectDB();
 // Routes
 
 const foodRoutes = require("./routes/foodRoutes");
-const userRoutes = require("./routes/userRouters");
+const userRoutes = require("./routes/userRoutes");
+const practiceRouter = require("./routes/practiceRouter");
 
 app.use("/api/foods", foodRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/practice", practiceRouter);
+
+// Khởi động server
 
 
 const PORT = 3000;
