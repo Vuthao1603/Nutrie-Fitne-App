@@ -57,6 +57,7 @@ const UserSchema = new mongoose.Schema({
   practice: [PracticeSchema], // nhật ký bài tập
   email: { type: String, unique: true, sparse: true },
   password: { type: String }, 
+  role: { type: String, enum: ["user", "admin"], default: "user" },
 });
 
 

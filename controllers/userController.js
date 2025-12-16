@@ -113,42 +113,76 @@ const register = async (req, res) => {
 };
 
 // Đăng nhập user
+// const login = async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+
+//     if (!email || !password) {
+//       return res.status(400).json({
+//         message: "Thiếu email hoặc mật khẩu",
+//       });
+//     }
+
+//     // Tìm user
+//     const user = await User.findOne({ email });
+
+//     if (!user) {
+//       return res.status(401).json({
+//         message: "Email không tồn tại!",
+//       });
+//     }
+
+//     // So sánh password (chưa hash)
+//     if (user.password !== password) {
+//       return res.status(401).json({
+//         message: "Sai mật khẩu!",
+//       });
+//     }
+
+//     // Login thành công
+//     res.json({
+//       message: "Login success",
+//       user,
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({
+//       message: "Lỗi server",
+//     });
+//   }
+// };
+const jwt = require("jsonwebtoken");
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({
-        message: "Thiếu email hoặc mật khẩu",
-      });
+      return res.status(400).json({ message: "Thiếu email hoặc mật khẩu" });
     }
 
-    // Tìm user
     const user = await User.findOne({ email });
-
     if (!user) {
-      return res.status(401).json({
-        message: "Email không tồn tại",
-      });
+      return res.status(401).json({ message: "Email không tồn tại" });
     }
 
-    // So sánh password (chưa hash)
     if (user.password !== password) {
-      return res.status(401).json({
-        message: "Sai mật khẩu",
-      });
+      return res.status(401).json({ message: "Sai mật khẩu" });
     }
 
-    // Login thành công
+    // ✅ TẠO TOKEN
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
+
     res.json({
       message: "Login success",
+      token,
       user,
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({
-      message: "Lỗi server",
-    });
+    res.status(500).json({ message: "Lỗi server" });
   }
 };
 
