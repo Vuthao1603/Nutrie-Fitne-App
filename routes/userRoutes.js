@@ -5,10 +5,11 @@ const userController = require("../controllers/userController");
 
 // ===== User =====
 router.post("/", userController.addUser); // POST /api/users
-router.get("/", userController.getUsers); // GET /api/users
+router.get("/getall", userController.getUsers); // GET /api/users
 router.patch("/:id", userController.updateUser); // PATCH /api/users/:id
 router.post("/login", userController.login); // POST /api/users/auth/login
 router.post("/register", userController.register); // POST /api/users/auth/register
+
 
 
 // ===== Meal Log =====

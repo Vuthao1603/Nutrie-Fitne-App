@@ -182,6 +182,7 @@ const login = async (req, res) => {
       user,
     });
   } catch (err) {
+    console.error("Lỗi login:", err);
     res.status(500).json({ message: "Lỗi server" });
   }
 };
