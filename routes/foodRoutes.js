@@ -6,7 +6,7 @@ const foodController = require("../controllers/foodController");
 router.get("/", foodController.getFoods);
 
 // POST create food
-router.post("/", foodController.createFood);
+router.post("/create", foodController.createFood);
 
 // PUT update food
 router.put("/:id", foodController.updateFood);
