@@ -16,7 +16,9 @@ const foodRoutes = require("./routes/foodRoutes");
 const userRoutes = require("./routes/userRoutes");
 const practiceRouter = require("./routes/practiceRouter");
 const adminRoutes = require("./routes/admin");
+const mealPlanRoutes = require("./routes/mealplanRouter");
 
+app.use("/api/mealplans", mealPlanRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/foods", foodRoutes);
 app.use("/api/users", userRoutes);
