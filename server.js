@@ -17,12 +17,14 @@ const userRoutes = require("./routes/userRoutes");
 const practiceRouter = require("./routes/practiceRouter");
 const adminRoutes = require("./routes/admin");
 const mealPlanRoutes = require("./routes/mealplanRouter");
+const stats = require("./routes/dashboard");
 
 app.use("/api/mealplans", mealPlanRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/foods", foodRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/practice", practiceRouter);
+app.use("/api/stats", stats);
 
 // Khởi động server
 
